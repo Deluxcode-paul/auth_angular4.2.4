@@ -1,0 +1,9 @@
+<p-dialog header="Godfather I" [(visible)]="display" modal="modal" width="300" [responsive]="true">
+  <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+  </p>
+  <p-footer>
+    <button type="button" pButton icon="fa-check" (click)="display=false" label="Yes"></button>
+    <button type="button" pButton icon="fa-close" (click)="display=false" label="No"></button>
+  </p-footer>
+</p-dialog>
+<button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show"></button>

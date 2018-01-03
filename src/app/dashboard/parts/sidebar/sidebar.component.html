@@ -1,0 +1,26 @@
+<aside class="main-sidebar" *ngIf="user">
+  <div slimScroll
+       width="230px"
+       height="95vh"
+       size="7px">
+    
+    <section class="sidebar">
+      <div class="user-panel">
+        <div class="image mx-auto">
+          <img src="/assets/img/avatar.jpeg" alt="User Image" class="rounded-circle">
+        </div>
+        <div class="info">
+          <p>Good Job, {{user.first_name}} <span *ngIf="user.last_name">{{user.last_name}}</span></p>
+          <p><small>You haven,t miss any task this week!</small></p>
+          <div>
+            <a [routerLink]="['settings']"><i class="fa fa-cogs"></i><small>Settings</small></a>
+            <a href="javascript://void(0);" (click)="show()"><i class="fa fa-user"></i><small>Profile</small></a>
+            <a href="javascript://void(0);" (click)="logout()"><i class="fa fa-sign-out"></i><small>Logout</small></a>
+          </div>
+        </div>
+        <img src="/assets/img/avatar-bg.png" alt="User Image" class="bg-user">
+      </div>
+      
+    </section>
+   </div>
+</aside>

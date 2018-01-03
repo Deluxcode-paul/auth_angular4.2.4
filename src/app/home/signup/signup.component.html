@@ -1,0 +1,157 @@
+<nav class="navbar navbar-expand-lg navbar-main fixed-top" #header [ngClass]="{ 'navbar-main-bg': this.headerOffsetTop > 10}">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/">
+        <strong>Body</strong>Fit
+      </a><!--HEADER LOGO-->
+    </div>
+
+    <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mx-auto"><!--START MENU LIST-->
+      <li class="nav-item active"><a class="nav-link" href="#">HOME</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">ABOUT</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">FEATURES</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">CLIENTS</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">SCREENSHOTS</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">PRICES</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
+    </ul><!--END MENU LIST-->
+    </div>
+  </div>
+</nav>
+<section class="head">
+  <div class="container">
+    <div class="col-sm-6 mx-auto card">
+      <div class="card-body">
+        <h3>Регистрация нового пользователя</h3>
+
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+        <form class="form-signin login" name="form" (ngSubmit)="f.form.valid && save()" #f="ngForm" novalidate>
+
+
+          <!-- <wizard navBarLayout="large-empty-symbols">
+            <wizard-step stepTitle="Цель" navigationSymbol="&#xf140;">
+              Content of Step 1
+
+              <button type="button" nextStep class="float-right btn btn-primary">Далее</button>
+
+            </wizard-step>
+            <wizard-step stepTitle="Анкета" navigationSymbol="&#xf2bb;">
+              <div class="form-group form-inline py-2">
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-primary btn-block" [ngClass]="{ 'active': user.gender == 1 }" (click)="setGender(1)">Male</button>
+                </div>
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-pink btn-block" [ngClass]="{ 'active': user.gender == 2 }" (click)="setGender(2)">Female</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only">Name</label>
+                <div class="mb-2 mb-sm-0">
+                  <input type="text" class="form-control" name="name" placeholder="Name" [ngClass]="{ 'is-invalid': f.submitted && !name.valid }" required [(ngModel)]="user.name" #name="ngModel">
+                  <small class="form-text text-muted">
+                    Your name.
+                  </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only">Birth Date</label>
+                <div class="mb-2 mb-sm-0">
+                  <input type="date" class="form-control" placeholder="Birth Date" name="bday" [ngClass]="{ 'is-invalid': f.submitted && !bday.valid }" required [(ngModel)]="user.bday" #bday="ngModel">
+                  <small class="form-text text-muted">
+                    Your birth day date.
+                  </small>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label class="sr-only">Height</label>
+                  <div class="mb-2 mb-sm-0">
+                    <input type="text" class="form-control" placeholder="Height" name="height" [ngClass]="{ 'is-invalid': f.submitted && !height.valid }" required [(ngModel)]="user.height" #height="ngModel">
+                    <small class="form-text text-muted">
+                      Your height.
+                    </small>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="sr-only">Weight</label>
+                  <div class="mb-2 mb-sm-0">
+                    <input type="text" class="form-control" placeholder="Weight" name="weight" [ngClass]="{ 'is-invalid': f.submitted && !weight.valid }" required [(ngModel)]="user.weight" #weight="ngModel">
+                    <small class="form-text text-muted">
+                      Your weight.
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" previousStep class="btn btn-primary">Назад</button>
+              <button type="button" nextStep class="float-right btn btn-primary">Далее</button>
+            </wizard-step>
+            <wizard-step stepTitle="Данные для входа" navigationSymbol="&#xf2bd;">
+              
+
+            </wizard-step>
+          </wizard> -->
+
+            <!-- <div class="row">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                  <a class="float-right" routerLink="/">Login</a>
+                </div>
+            </div> -->
+          <div class="row pb-2">
+            <div class="col-sm-12">
+              Выберите первоочередную цель занятия спортом:
+            </div>
+            <div class="col-sm-6">
+              <span class="btn btn-block" [ngClass]="{'btn-outline-success': goal != 1, 'btn-success': goal == 1}" (click)="takeGoal(1)">
+                Похудеть
+              </span>
+            </div>
+
+            <div class="col-sm-6">
+              <span class="btn btn-block" [ngClass]="{'btn-outline-warning': goal != 2, 'btn-warning': goal == 2}" (click)="takeGoal(2)">
+                Рельеф
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-2 pt-10" *ngIf="goal">
+            <div class="form-group">
+              Заполните поля, для создания профиля
+            </div>
+            <div class="form-group">
+              <label class="sr-only">Email</label>
+              <div class="mb-2 mb-sm-0">
+                <input type="email" class="form-control" placeholder="Email" name="email" [ngClass]="{ 'is-invalid': f.submitted && !mail.valid }" required [(ngModel)]="user.mail" #email="ngModel">
+                <small class="form-text text-muted">
+                  Ваш Email адрес.
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="sr-only">Password</label>
+              <div class="mb-2 mb-sm-0">
+                <input type="password" class="form-control" placeholder="Пароль" name="password" [ngClass]="{ 'is-invalid': f.submitted && !password.valid }" required [(ngModel)]="user.password" #password="ngModel">
+                <small class="form-text text-muted">
+                  Придумайте пароль.
+                </small>
+              </div>
+            </div>
+
+            <button [disabled]="loading" type="submit" class="float-right btn btn-primary">Зарегистрироваться</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>

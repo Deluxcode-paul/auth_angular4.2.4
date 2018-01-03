@@ -1,0 +1,77 @@
+<section class="head">
+    <!--START OF NAVBAR-->
+      <!--END OF NAVBAR-->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-xs-12 head-info">
+            <h2>Big title</h2><!--LEFT HEAD TITLE-->
+              <!--PARAGRAPH HEAD-->
+            <p class="lead">Home Page here.</p>
+          </div>
+          <div class="col-md-5 col-xs-12">
+            <div class="card">
+              <div class="card-body">
+                <form class="form-signin login" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm">
+                    <!-- <h2 class="form-signin-heading">Login</h2> -->
+                    <div class="social">
+                      <a href="#" title="" class="facebook">
+                        <i class="fa fa-facebook"></i>
+                      </a>
+                      <a href="#" title="" class="twitter">
+                        <i class="fa fa-twitter"></i>
+                      </a>
+                      <a href="#" title="" class="vk">
+                        <i class="fa fa-vk"></i>
+                      </a>
+
+                      <a href="#" title="" class="google-plus">
+                        <i class="fa fa-google-plus"></i>
+                      </a>
+                    </div>
+
+                    <span class="social-divider">or</span>
+
+                    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+                    
+                    <div class="form-group">
+                      <label class="sr-only">Email</label>
+                      <div class="input-group mb-2 mb-sm-0">
+                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                        <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && !email.valid }" required email/>
+                      </div>
+                       <div *ngIf="f.submitted && !email.valid" class="text-danger help-block">
+                         <div *ngIf="email.errors.email">
+                           Email is not valid.
+                         </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only">Password</label>
+                      <div class="input-group mb-2 mb-sm-0">
+                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                        <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="model.password" [ngClass]="{ 'is-invalid': f.submitted && !password.valid }" #password="ngModel" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                          <button [disabled]="loading" type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                        <div class="col-sm-6">
+                          <a class="float-right" routerLink="/signup">Sign Up</a>
+                        </div>
+                        
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</section>
+
+ <!--Footer Bottom-->
+  <div class="footer-bottom">
+    <div class="copyright-text">Copyright © 2017. All Rights Reserved</div>
+  </div>
+</footer>
